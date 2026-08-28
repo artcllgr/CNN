@@ -1,0 +1,79 @@
+{
+  "historico": {
+    "train_loss": [
+      2.049742836825053,
+      1.9347023823208278,
+      1.9147997484631007,
+      1.9086408262464736,
+      1.888415953593784
+    ],
+    "train_acc": [
+      0.2342,
+      0.2806222222222222,
+      0.28584444444444446,
+      0.2898222222222222,
+      0.29735555555555554
+    ],
+    "val_loss": [
+      1.9333428993225097,
+      1.8167448822021484,
+      1.8246804618835448,
+      1.7755614406585694,
+      1.751026287460327
+    ],
+    "val_acc": [
+      0.2992,
+      0.3244,
+      0.3202,
+      0.3492,
+      0.3572
+    ],
+    "lr": [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+    ]
+  },
+  "melhor_val_acc": 0.3572,
+  "melhor_epoca": 5,
+  "config": {
+    "dataset": "CIFAR10",
+    "tamanho_imagem": 32,
+    "canais": 3,
+    "n_classes": 10,
+    "frac_validacao": 0.1,
+    "num_workers": 0,
+    "media": [
+      0.4914,
+      0.4822,
+      0.4465
+    ],
+    "desvio": [
+      0.247,
+      0.2435,
+      0.2616
+    ],
+    "batch_size": 128,
+    "epocas": 10,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "paciencia": 3,
+    "semente": 42,
+    "canais_conv": [
+      16,
+      32,
+      64
+    ],
+    "neuronios_fc": 128,
+    "dropout": 0.3,
+    "arq_checkpoint": "melhor_modelo.pt",
+    "arq_historico": "historico.json",
+    "arq_curvas": "curvas_treino.png",
+    "arq_confusao": "matriz_confusao.png",
+    "arq_metricas": "metricas_teste.json",
+    "arq_torchscript": "modelo_scriptado.pt",
+    "arq_classes": "classes.json"
+  }
+}
