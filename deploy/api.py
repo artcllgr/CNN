@@ -73,15 +73,15 @@ async def ciclo_de_vida(app: FastAPI):
 
 
 app = FastAPI(
-    title="Classificador de Roupas (CNN)",
-    description="Serviço de inferência da CNN treinada no FashionMNIST",
+    title="Classificador CIFAR-10 (CNN)",
+    description="Serviço de inferência da CNN treinada no CIFAR-10",
     version="1.0.0",
     lifespan=ciclo_de_vida,
 )
 
 
 def preprocessar(bytes_imagem: bytes, inverter: bool = False) -> torch.Tensor:
-    """bytes -> tensor (1,1,28,28). Mesma receita do treino, sem torchvision."""
+    """bytes -> tensor (1,3,32,32). Mesma receita do treino, sem torchvision."""
     imagem = Image.open(io.BytesIO(bytes_imagem)).convert("RGB")
     if inverter:
         imagem = ImageOps.invert(imagem)
@@ -141,14 +141,14 @@ def pagina_teste():
     """Página mínima para demonstração em sala, sem precisar de Postman/curl."""
     return """
 <!doctype html><html lang="pt-br"><meta charset="utf-8">
-<title>Classificador de Roupas</title>
+<title>Classificador CIFAR-10</title>
 <style>
  body{font-family:system-ui,sans-serif;max-width:640px;margin:3rem auto;padding:0 1rem}
  #saida{white-space:pre-wrap;background:#f4f4f5;padding:1rem;border-radius:8px;margin-top:1rem}
  button{padding:.6rem 1.2rem;border:0;border-radius:6px;background:#2563eb;color:#fff;cursor:pointer}
 </style>
-<h1>Classificador de Roupas — CNN</h1>
-<p>Envie uma imagem (idealmente uma peça de roupa clara sobre fundo escuro).</p>
+<h1>Classificador CIFAR-10 — CNN</h1>
+<p>Envie uma imagem de uma das 10 classes: avião, automóvel, pássaro, gato, veado, cachorro, sapo, cavalo, navio ou caminhão.</p>
 <input type="file" id="arq" accept="image/*">
 <label><input type="checkbox" id="inv"> inverter cores</label>
 <button onclick="enviar()">Classificar</button>
